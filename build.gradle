@@ -1,0 +1,43 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    // Top-level variables used for versioning
+    ext {
+        kotlin_version = '1.7.10'            // Updated Kotlin version
+        java_version = JavaVersion.VERSION_11  // Use Java 11, recommended for AGP 8+
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        // Android Gradle Plugin version 8.0.2 (latest stable at this time)
+        classpath 'com.android.tools.build:gradle:8.0.2'
+
+        // Kotlin Gradle plugin with the updated kotlin_version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // Navigation Safe Args plugin - updated to recent stable version
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7"
+
+        // Download task plugin
+        classpath 'de.undercouch:gradle-download-task:4.1.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Clean task to delete build directories
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
